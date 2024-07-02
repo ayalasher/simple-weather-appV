@@ -1,0 +1,13 @@
+.plate{
+    width: 70%;
+    height: 100px;
+    background-color: aqua ; 
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 3%;
+    padding: 3%;
+}
+
+.details{
+
+}
