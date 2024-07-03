@@ -34,6 +34,18 @@ export default function Plate() {
     }
 
     console.log(loading);
+
+    function getCurrentDate() {
+        // const date = new Date();
+        // const year = date.getFullYear();
+        // console.log(year);
+        return new Date().toLocaleDateString('en-us',{
+            weekday:"long",
+            month:"long",
+            day:"numeric",
+            year:"numeric"
+        })
+    }
     useEffect(()=>{
         fetchWeatherdata("nairobi")
         console.log(weatherData);
@@ -52,6 +64,45 @@ export default function Plate() {
                             {weatherData?.name} , <span> {weatherData?.sys?.country} </span>
                         </h4>
                     </div>
+
+                    <div  className="city-date" >
+                        <span> {getCurrentDate()} </span>
+                    </div>
+
+                    <div className="City-temp" >
+                        {
+                            weatherData?.main?.temp
+                        }
+                       
+                    </div>
+
+                    <p className="description" >
+                            {
+                                weatherData && weatherData.weather && weatherData.weather[0] ? weatherData.weather[0].description : ""
+                            }
+                        </p>
+                    <div className="weather-info" >
+                        <div>
+                            <div>
+                                <h4>Wind speed</h4>
+                                <p className="wind" > {weatherData?.wind?.speed} </p>
+                               
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <div>
+                                <h4>humidity</h4>
+                                <p className="humidity" > {weatherData?.main?.humidity} </p>
+                               
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
                  </div>)
             }
             
